@@ -15,18 +15,19 @@ const eqArrays = function(arr1, arr2) {
   }
 };
 
-const assertArraysEqual = function(arr1, arr2, expected) {
-  if (eqArrays(arr1, arr2) === expected) {
-    console.log(`😃😃😃Assertion Passed: ${arr1} === ${arr2}`);
+const assertArraysEqual = function(arr1, arr2) {
+  if (eqArrays(arr1, arr2)) {
+    console.log(`😃😃😃Assertion Passed`);
   } else {
-    console.log(`💩💩💩Assertion Failed: ${arr1} !== ${arr2}`);
+    console.log(`💩💩💩Assertion Failed`);
   }
 };
 
-assertArraysEqual([1, 2, 3], [3, 4, 5], false); // passed
-assertArraysEqual([1, 2, 3], [3, 4, 5], true);  // failed
-assertArraysEqual([1, 2, 3, "4"], [1, 2, 3, 4], false);  // passed
-assertArraysEqual([], [], true); // passed
-assertArraysEqual([], true); // fail
+assertArraysEqual([1, 2, 3], [3, 4, 5]); // fail
+assertArraysEqual([1, 2, 3], [3, 4, 5]);  // fail
+assertArraysEqual([1, 2, 3, "4"], [1, 2, 3, 4]);  // fail
+assertArraysEqual([], []); // passed
+assertArraysEqual([1, 2, 3], [1, 2, 3]); // passed
+assertArraysEqual([]); // fail
 
 
