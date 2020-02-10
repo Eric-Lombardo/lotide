@@ -1,39 +1,46 @@
-const assertEqual = require("../assertEqual");
 const eqArrays = require("../eqArrays");
+const { assert } = require("chai");
 
-// TESTING
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true) // => pass
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false) // => pass
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false); // => pass
-
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => should PASS
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => should PASS
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => should PASS
-assertEqual(eqArrays([], []), true); // => should PASS
-assertEqual(eqArrays([]), false); // => should PASS
-
-let arr1 = [
-  [
-    [
+describe("#eqArraysTest", () => {
+  it("should return true for comparing [[2, 3], 4] and [[2, 3], 4]", () => {
+    assert.isTrue(eqArrays([[2, 3], 4], [[2, 3], 4]));
+  });
+  it("should return false for comparing [[2, 3], [4]] and [[2, 3], [5]]", () => {
+    assert.isFalse(eqArrays([[2, 3], [4]], [[2, 3], [5]]))
+  })
+  it ("should return true for comapring ['hi', 'hello'] with ['hi', 'hello']", () => {
+    assert.isTrue(eqArrays(["hi", "hello"], ["hi", "hello"]));
+  })
+  it ("should return true when comparing 2 empty arrays", () => {
+    assert.isTrue(eqArrays([], []));
+  })
+  it("should return false if only 1 array is given", () => {
+    assert.isFalse(eqArrays([]));
+  })
+  it("should still return true for 2 equal deeplyNested arrays", () => {
+    let arr1 = [
       [
         [
-          2, 3, 4, [5, 6, 7]
+          [
+            [
+              2, 3, 4, [5, 6, 7]
+            ]
+          ]
         ]
       ]
-    ]
-  ]
-];
-
-let arr2 = [
-  [
-    [
+    ];
+    
+    let arr2 = [
       [
         [
-          2, 3, 4, [5, 6, 7]
+          [
+            [
+              2, 3, 4, [5, 6, 7]
+            ]
+          ]
         ]
       ]
-    ]
-  ]
-];
-assertEqual(eqArrays(arr1, arr2), true); // => should PASS
+    ];
+    assert.isTrue(eqArrays(arr1, arr2));
+  })
+});

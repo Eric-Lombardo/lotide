@@ -1,19 +1,17 @@
 const middle = require("../middle")
-const assertArraysEqual = require("../assertArraysEqual")
+const { assert } = require("chai");
 
-// TEST IF MIDDLE FUNCTION WORKS
-// console.log(middle([1]))
-// console.log(middle([1, 2]))
-// console.log(middle([1, 2, 3]))
-// console.log(middle([1, 2, 3, 4, 5]))
-// console.log(middle([1, 2, 3, 4]))
-// console.log(middle([1, 2, 3, 4, 5, 6]))
-
-// TEST TO ASSERT IF ARRAYS ARE EQUAL
-assertArraysEqual(middle([1]), []) // passed
-assertArraysEqual(middle([1, 2]), [])  // passed
-assertArraysEqual(middle([1, 2, 3]), [2])  // passed
-assertArraysEqual(middle([1, 2, 3, 4, 5]), [3])  // passed
-assertArraysEqual(middle([1, 2, 3, 4]), [2, 3])  // passed
-assertArraysEqual(middle([1, 2, 3, 4, 5, 6]), [3, 4])  // passed
-assertArraysEqual(middle([1, 2, 3, 4, 5, 6]), [3, 5])  // fail
+describe('#middle', () => {
+  it('should return [] when there is only one value in a given array', () => {
+    assert.deepEqual(middle([1]), []);
+  });
+  it('should return [2] when the input is [1, 2, 3]', () => {
+    assert.deepEqual(middle([1, 2 ,3]), [2]);
+  });
+  it('should return [3, 4] when a given array [1, 2, 3, 4, 5, 6]', () => {
+    assert.deepEqual(middle([1, 2 ,3, 4, 5, 6]), [3, 4]);
+  });
+  it('should return false if [3, 4] is the output for the input array [1, 2, 3, 4, 5, 6]', () => {
+    assert.notDeepEqual(middle([1, 2 ,3, 4, 5, 6]), [3, 5]);
+  });
+});
