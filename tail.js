@@ -1,5 +1,3 @@
-const assertEqual = require("./assertEqual");
-
 // tail function
 const tail = function(arr) {
   // edge cases where arr is empty or only contains a head

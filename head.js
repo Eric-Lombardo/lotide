@@ -1,5 +1,3 @@
-const assertEqual = require("./assertEqual");
-
 // head function
 const head = function(arr) {
   // checks to see if the array is empty or not
