@@ -1,31 +1,3 @@
-// Function implementation
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`😃😃😃Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`💩💩💩Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
-
-const eqArrays = function(arr1, arr2) {
-  if (typeof arr1 !== "object" || typeof arr2 !== "object") {
-    // (!Array.isArray(arr1) && !Array.isArray(arr2))
-    return false;
-  }
-
-  if (arr1.length !== arr2.length) {
-    return false;
-  } else {
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] !== arr2[i]) {
-        return false;
-      }
-    }
-    return true;
-  }
-};
-
-// ACTUAL FUNCTION
 const eqObjects = function(obj1, obj2) {
   let array1 = Object.keys(obj1);
   let array2 = Object.keys(obj2);
@@ -51,49 +23,8 @@ const eqObjects = function(obj1, obj2) {
     } else if (obj1[key] !== obj2[key]) {
       return false;
     }
-    
-
-
   }
   return true;
 };
 
-
-// ----------- tests -------------------------
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false); // => false
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // => false
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-eqObjects(cd, dc); // => true
-
-const cd2 = { c: "1", d: ["2", 3, 4] };
-eqObjects(cd, cd2); // => false
-
-assertEqual(eqObjects(cd, dc), true); // => true
-assertEqual(eqObjects(cd, cd2), false); // => false
-const obj1 = {
-  a: {
-    b: {
-      c: {
-        d: {
-          f: 1
-        }
-      }
-    }
-  }
-};
-
-const obj2 = {
-  a: {
-    b: {
-      c: {
-        d: {
-          f: 2
-        }
-      }
-    }
-  }
-};
-
-assertEqual(eqObjects(obj1, obj2), true); // FAIL ASSERTION
+module.exports = eqObjects;

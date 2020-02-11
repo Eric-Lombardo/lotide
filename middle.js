@@ -1,7 +1,3 @@
-// TEST/ASSERTION FUNCTIONS
-const assertArraysEqual = require("./assertArraysEqual");
-
-// ACTUAL FUNCTIONS
 const middle = function(arr) {
   // edge case for empty, 1 item or 2 item arrays to return empty arr
   if (arr.length === 0 || arr.length === 1 || arr.length === 2) {
